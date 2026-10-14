@@ -25,6 +25,12 @@ fn main() {
         cx.open_window(
             WindowOptions {
                 window_bounds: Some(WindowBounds::Windowed(bounds)),
+                // Matches the .desktop file so shells show the right icon.
+                app_id: Some("io.github.Guillermode20.Blockwise".into()),
+                titlebar: Some(gpui::TitlebarOptions {
+                    title: Some("blockwise".into()),
+                    ..Default::default()
+                }),
                 ..Default::default()
             },
             move |window, cx| {

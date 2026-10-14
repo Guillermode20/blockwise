@@ -204,6 +204,25 @@ fn columns_for_width(w: f32) -> u8 {
     m
 }
 
+/// Inside a Flatpak, `/usr` and `/etc` are the runtime's, and the host's
+/// copies are mounted under `/run/host` (needs `--filesystem=host-os`/
+/// `host-etc`). Point scans of those trees at the host versions.
+fn host_path(path: String) -> String {
+    if !std::path::Path::new("/.flatpak-info").exists() {
+        return path;
+    }
+    for prefix in ["/usr", "/etc"] {
+        let rest = path.strip_prefix(prefix);
+        if let Some(rest) = rest.filter(|r| r.is_empty() || r.starts_with('/')) {
+            let mapped = format!("/run/host{}{}", prefix, rest);
+            if std::path::Path::new(&mapped).exists() {
+                return mapped;
+            }
+        }
+    }
+    path
+}
+
 pub struct Blockwise {
     font: SharedString,
     focus: FocusHandle,
@@ -320,6 +339,7 @@ impl Blockwise {
     }
 
     pub fn start_scan(&mut self, path: String, cx: &mut Context<Self>) {
+        let path = host_path(path);
         if let Some(c) = self.cancel.take() {
             c.store(true, Ordering::Relaxed);
         }

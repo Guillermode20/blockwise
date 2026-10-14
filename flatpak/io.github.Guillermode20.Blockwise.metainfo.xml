@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.Guillermode20.Blockwise</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>blockwise</name>
+  <summary>Fast, keyboard-driven disk usage visualizer</summary>
+  <developer id="io.github.guillermode20">
+    <name>Will Hick</name>
+  </developer>
+  <description>
+    <p>
+      blockwise scans a folder in parallel and shows where the space went: a sortable folder tree on top
+      and a cushion-shaded treemap below.
+    </p>
+    <ul>
+      <li>Live folder totals while the scan runs</li>
+      <li>Treemap zoom, plus highlighting by file type</li>
+      <li>Top Files and File Types views</li>
+      <li>Search by name, glob or size, e.g. *.log &gt;10M</li>
+      <li>Full keyboard navigation, move to trash, CSV export</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">io.github.Guillermode20.Blockwise.desktop</launchable>
+  <url type="homepage">https://github.com/Guillermode20/blockwise</url>
+  <url type="bugtracker">https://github.com/Guillermode20/blockwise/issues</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/Guillermode20/blockwise/main/docs/screenshot.png</image>
+      <caption>Scanning /usr</caption>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.1"/>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </supports>
+  <releases>
+    <release version="0.1.0" date="2026-10-14">
+      <description><p>First release.</p></description>
+    </release>
+  </releases>
+</component>

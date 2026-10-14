@@ -1,2 +1,7 @@
 /target
 *.csv
+/.flatpak-builder
+/flatpak/build-dir
+/flatpak/repo
+*.flatpak
+.fb.log

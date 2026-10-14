@@ -1,0 +1,46 @@
+app-id: io.github.Guillermode20.Blockwise
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: blockwise
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  # A disk usage analyzer needs to read the whole filesystem.
+  - --filesystem=host
+  # host/home don't include other Flatpak apps' data (~/.var/app), where
+  # e.g. Flatpak Steam and Heroic keep their games; grant it explicitly.
+  - --filesystem=~/.var/app
+  # Host /usr and /etc appear under /run/host; the app maps them.
+  - --filesystem=host-os:ro
+  - --filesystem=host-etc:ro
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env:
+    CARGO_HOME: /run/build/blockwise/cargo
+modules:
+  - name: blockwise
+    buildsystem: simple
+    build-options:
+      # Crates are fetched at build time. Fine for release bundles; Flathub
+      # would need an offline cargo-sources.json instead.
+      build-args:
+        - --share=network
+    build-commands:
+      - cargo build --release --locked
+      - install -Dm755 target/release/blockwise /app/bin/blockwise
+      - install -Dm644 flatpak/io.github.Guillermode20.Blockwise.desktop /app/share/applications/io.github.Guillermode20.Blockwise.desktop
+      - install -Dm644 flatpak/io.github.Guillermode20.Blockwise.svg /app/share/icons/hicolor/scalable/apps/io.github.Guillermode20.Blockwise.svg
+      - install -Dm644 flatpak/io.github.Guillermode20.Blockwise.metainfo.xml /app/share/metainfo/io.github.Guillermode20.Blockwise.metainfo.xml
+    sources:
+      - type: dir
+        path: ..
+        skip:
+          - target
+          - .flatpak-builder
+          - flatpak/build-dir
+          - flatpak/repo

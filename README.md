@@ -38,6 +38,28 @@ treemap below, in the spirit of WizTree and WinDirStat. Built in Rust on [GPUI](
 | `Ctrl+1` `2` `3` | Tree / Top Files / Types |
 | `Ctrl+E` | Export CSV |
 
+## Install (Flatpak)
+
+Download `blockwise-<version>-x86_64.flatpak` from the
+[latest release](https://github.com/Guillermode20/blockwise/releases/latest), then:
+
+```sh
+flatpak install --user blockwise-0.1.0-x86_64.flatpak   # pulls org.freedesktop.Platform 25.08 from Flathub if needed
+flatpak run io.github.Guillermode20.Blockwise
+```
+
+The sandbox has read/write access to the host filesystem (needed to measure and delete), including other Flatpak
+apps' data in `~/.var/app` (where Flatpak Steam and Heroic keep their games). Scans of `/usr` and `/etc` are mapped
+to the host copies under `/run/host`. Scanning `/` inside the sandbox shows the sandbox root, so scan specific mounts
+instead.
+
+To build the Flatpak yourself:
+
+```sh
+cd flatpak
+flatpak-builder --user --install --force-clean build-dir io.github.Guillermode20.Blockwise.yml
+```
+
 ## Build
 
 You need a recent stable Rust (edition 2024) plus GPUI's system libraries. On Debian/Ubuntu:

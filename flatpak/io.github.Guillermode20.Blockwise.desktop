@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=blockwise
+GenericName=Disk Usage Analyzer
+Comment=See what is using your disk space
+Exec=blockwise %f
+Icon=io.github.Guillermode20.Blockwise
+Terminal=false
+Categories=System;Filesystem;
+Keywords=disk;usage;space;treemap;storage;
+MimeType=inode/directory;
+StartupWMClass=io.github.Guillermode20.Blockwise
