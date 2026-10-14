@@ -24,3 +24,8 @@ image = { version = "0.25", default-features = false }
 
 [target.'cfg(unix)'.dependencies]
 libc = "0.2"
+
+# xattr 0.2.3 (via gpui -> zed-async-tar) uses libc::ENOATTR, which current
+# libc no longer exports on Linux; the vendored copy maps it to ENODATA.
+[patch.crates-io]
+xattr = { path = "vendor/xattr-0.2.3" }

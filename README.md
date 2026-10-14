@@ -44,14 +44,14 @@ You need a recent stable Rust (edition 2024) plus GPUI's system libraries. On De
 
 ```sh
 sudo apt install libxkbcommon-dev libxkbcommon-x11-dev libwayland-dev libvulkan-dev \
-  libx11-xcb-dev libxcb1-dev libfontconfig-dev libfreetype-dev libgtk-3-dev pkg-config
+  libx11-xcb-dev libxcb1-dev libfontconfig-dev libfreetype-dev pkg-config
 ```
 
 On Fedora:
 
 ```sh
 sudo dnf install libxkbcommon-devel libxkbcommon-x11-devel wayland-devel vulkan-loader-devel \
-  libxcb-devel fontconfig-devel freetype-devel gtk3-devel
+  libxcb-devel fontconfig-devel freetype-devel
 ```
 
 Then run:
