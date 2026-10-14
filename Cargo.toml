@@ -1,6 +1,6 @@
 [package]
 name = "blockwise"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
 description = "Fast, dark, keyboard-driven disk usage visualizer (tree + cushion treemap) built on GPUI"
 license = "MIT"

@@ -36,6 +36,9 @@
     <control>pointing</control>
   </supports>
   <releases>
+    <release version="1.0.0" date="2026-10-14">
+      <description><p>First stable release: same feature set as 0.1.0, with the CI build fixed and Flatpak access to other apps' data (e.g. Flatpak Steam games).</p></description>
+    </release>
     <release version="0.1.0" date="2026-10-14">
       <description><p>First release.</p></description>
     </release>

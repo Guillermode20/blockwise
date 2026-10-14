@@ -44,7 +44,7 @@ Download `blockwise-<version>-x86_64.flatpak` from the
 [latest release](https://github.com/Guillermode20/blockwise/releases/latest), then:
 
 ```sh
-flatpak install --user blockwise-0.1.0-x86_64.flatpak   # pulls org.freedesktop.Platform 25.08 from Flathub if needed
+flatpak install --user blockwise-1.0.0-x86_64.flatpak   # pulls org.freedesktop.Platform 25.08 from Flathub if needed
 flatpak run io.github.Guillermode20.Blockwise
 ```
 
